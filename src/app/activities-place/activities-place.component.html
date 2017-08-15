@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-md-3" *ngFor="let ac of activities">
+    <!-- box -->
+    <div class="thumbnail {{ac.status}}">
+      <div class="caption">
+        <img src="../assets/img/alright_filled.png" class="marked" *ngIf="ac.status == 'done ok'">
+        <img src="../assets/img/non-compliance_filled.png" class="marked" *ngIf="ac.status == 'done wrong'">
+        <div class="type-service">
+          <i>{{ac.type}}</i>
+        </div>
+        <h3>{{ac.title}}</h3>
+        <p>
+          <a href="" class="btn-desc" role="button">Descrição</a>
+        </p>
+        <div class="box-button">
+          <!-- if done -->
+          <a href="" class="btn btn-option" role="button" *ngIf="ac.status != ''">
+                <img src="../assets/img/update.png">
+                <span class="name">alterar</span>
+              </a>
+          <a href="" class="btn btn-option" role="button" *ngIf="ac.status != ''">
+                  <img src="../assets/img/comments.png">
+                  <span class="name">comentar</span>
+              </a>
+
+          <!-- else -->
+          <a href="" class="btn btn-option" role="button" *ngIf="ac.status == ''">
+                <img src="../assets/img/non-compliance_empty.png">
+                <span class="name">Não Consegui</span>
+              </a>
+          <a href="" class="btn btn-option" role="button" *ngIf="ac.status == '' ">
+                <img src="../assets/img/alright_empty.png">
+                <span class="name">Consegui</span>
+              </a>
+
+        </div>
+        <div class="comments">
+          <div *ngIf="ac.comments != ''">
+            <span class="comment" *ngFor="let c of ac.comments">{{c}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

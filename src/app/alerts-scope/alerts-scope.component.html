@@ -1,0 +1,89 @@
+<div id="alerts-scope">
+  <div class="col-md-1">
+    <a href="javascript:void();" (click)="showOverlay($event, 'notices')">
+      <img src="../assets/img/bell.png"/><span class="badge">{{noticesQtd}}</span>
+    </a>
+    <div *ngIf="noticesShow" class="suport_box_alerts">
+      <div class="hider_icon">
+        <a href="javascript:void();" (click)="hideOverlay()">
+          <img src="../assets/img/bell.png"/><span class="badge">{{noticesQtd}}</span>
+        </a>
+      </div>
+      <div class="box_alerts right">
+        <h3>Você ainda possui {{noticesQtd}} atividades para hoje.<br /> Vamos tentar concluir agora? </h3>
+        <div *ngFor="let n of notices" class="box_content">
+          <h4>{{n.type}} ({{n.descs.length}})</h4>
+          <ul>
+            <li *ngFor="let d of n.descs">{{d}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-1">
+    <a href="javascript:void();" (click)="showOverlay($event, 'safety')">
+      <img src="../assets/img/lock.png"/>
+      <span class="badge">{{safetyQtd}}</span>
+    </a>
+    <div *ngIf="safetyShow" class="suport_box_alerts">
+      <div class="hider_icon">
+        <a href="javascript:void();" (click)="hideOverlay()">
+          <img src="../assets/img/lock.png"/>
+          <span class="badge">{{safetyQtd}}</span>
+        </a>
+      </div>
+      <div class="box_alerts right">
+        <div *ngFor="let s of safety" class="box_content">
+          <h3>{{s.type}}</h3>
+          <ul>
+            <li *ngFor="let d of s.descs">{{d}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-1">
+    <a href="javascript:void();" (click)="showOverlay($event, 'allergies')">
+      <img src="../assets/img/forbidden.png" />
+      <span class="badge">{{allergiesQtd}}</span>
+    </a>
+
+    <div *ngIf="allergiesShow" class="suport_box_alerts">
+      <div class="hider_icon">
+        <a href="javascript:void();" (click)="hideOverlay()">
+          <img src="../assets/img/forbidden.png"/>
+          <span class="badge">{{allergiesQtd}}</span>
+        </a>
+      </div>
+      <div class="box_alerts right">
+        <div *ngFor="let a of allergies" class="box_content">
+          <h3>{{a.type}}</h3>
+          <ul>
+            <li *ngFor="let d of a.descs">{{d}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-1">
+    <a href="javascript:void();" (click)="showOverlay($event, 'info')">
+      <img src="../assets/img/info.png" />
+    </a>
+    <div *ngIf="infoShow" class="suport_box_alerts">
+      <div class="hider_icon">
+        <a href="javascript:void();" (click)="hideOverlay()">
+          <img src="../assets/img/info.png"/>
+        </a>
+      </div>
+      <div class="box_alerts left">
+        <div *ngFor="let i of info" class="box_content">
+          <h3>{{i.type}}</h3>
+          <ul>
+            <li *ngFor="let d of i.descs" style="margin-bottom: 15px;">{{d}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="overlay-alerts-scope" *ngIf="overlay" (click)="hideOverlay()"></div>

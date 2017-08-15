@@ -1,0 +1,55 @@
+<div id="rules_calendar">
+  <div class="container">
+    <div class="row">
+
+      <div *ngFor="let rc of rulesCalendar">
+
+        <div class="col-xs-1" *ngIf="rc.type != 'today'">
+          <a href="/" *ngIf="rc.plan == 'with-plan'">
+            <div [class]="rc.plan">
+              <div [class]="rc.type">
+                <div class="progress-radius" *ngIf="rc.percent > 0">
+                  <round-progress [current]="rc.percent" [max]="100" [color]="'#FFF'" [background]="''" [radius]="50" [stroke]="6" [rounded]="true"
+                    [clockwise]="false" [responsive]="true" [duration]="1800" [animation]="'easeInOutQuart'" class="radius">
+                  </round-progress>
+                  <div class="clearfix"></div>
+                </div>
+                <span class="number">{{rc.day}}</span> <span class="month">{{rc.month}}</span>
+              </div>
+              <div class="content-release-medical" *ngIf="rc.type == 'release-medical'">
+                <div class="content">
+                  <span class="desc"> Previsão de Alta</span>
+                  <a href="/" class="">Ver plano</a>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <div [class]="rc.plan" *ngIf="rc.plan == 'without-plan'">
+            <div class="{{rc.type}} without-plan">
+              <span class="number">{{rc.day}}</span> <span class="month">{{rc.month}}</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-xs-2" *ngIf="rc.type == 'today'">
+          <div [class]="rc.plan">
+            <div [class]="rc.type">
+              <span class="title">Hoje</span>
+              <div class="content">
+                <span class="number">{{rc.day}}</span>
+                <span class="month">{{rc.month}}</span>
+                <a href="/" class="open-calendar">
+              <img src="../assets/img/tip.png" />
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
